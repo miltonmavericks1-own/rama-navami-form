@@ -342,12 +342,7 @@
 
       <div class="form-section-title">Family Details</div>
       <div class="form-grid">
-        <div class="field-group full-w">
-          <label for="familyName">Family Name *</label>
-          <input type="text" id="familyName" name="familyName"
-                 placeholder="e.g. Sharma, Reddy, Rao…" autocomplete="family-name">
-          <span class="error-hint">Please enter your family name.</span>
-        </div>
+
         <div class="field-group full-w">
           <label for="gothram">Gothram *</label>
           <input type="text" id="gothram" name="gothram"
@@ -392,7 +387,7 @@
       </div>
 
       <div class="submit-wrap">
-        <button type="submit" class="btn-submit">🕉 &nbsp; Register for Pooja &nbsp; 🕉</button>
+        <button type="submit" class="btn-submit">🕉 &nbsp; Submit &nbsp; 🕉</button>
       </div>
 
     </form>
@@ -415,7 +410,7 @@
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw-q9Cv0LwpbABrMugIOYihZrmJ6z0jE9ToZIo0Gt84HaIfutj_EioSBbVMTOZwm3c/exec";
 const form = document.getElementById("registrationForm");
 const successMsg = document.getElementById("successMsg");
-const mandatoryFields = ["familyName", "gothram", "adult1", "adult2"];
+const mandatoryFields = ["gothram", "adult1", "adult2"];
 
 form.addEventListener("submit", async function(e) {
   e.preventDefault();
@@ -423,7 +418,6 @@ form.addEventListener("submit", async function(e) {
 
   const data = {
     timestamp:  new Date().toLocaleString("en-CA", { timeZone: "America/Toronto" }),
-    familyName: form.familyName.value.trim(),
     gothram:    form.gothram.value.trim(),
     adult1:     form.adult1.value.trim(),
     adult2:     form.adult2.value.trim(),
@@ -444,7 +438,7 @@ form.addEventListener("submit", async function(e) {
     form.style.display = "none";
     successMsg.classList.add("visible");
   } catch (err) {
-    btn.textContent = "🕉 Register for Pooja 🕉";
+    btn.textContent = "🕉 Submit 🕉";
     btn.disabled = false;
     alert("Submission issue — please check your internet connection and try again.");
   }
